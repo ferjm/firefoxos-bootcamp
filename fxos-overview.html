@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+
+    <title>Firefox OS Bootcamp</title>
+
+    <meta name="description" content="Firefox OS bootcamp">
+    <meta name="author" content="Dietrich Ayala and Fernando Jiménez Moreno based on Salvador de la Puente's work">
+
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/reveal.min.css">
+    <link rel="stylesheet" href="css/theme/firefoxos.css" id="theme">
+
+    <!-- For syntax highlighting -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- If the query includes 'print-pdf', use the PDF print sheet -->
+    <script>
+      document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+    </script>
+
+    <!--[if lt IE 9]>
+    <script src="lib/js/html5shiv.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <div class="reveal">
+
+      <div class="slides">
+        <section>
+          <header>
+            <h1>Firefox OS</h1>
+            <h2>Bootcamp</h2>
+            <div id="foxtail"></div>
+          </header>
+        </section>
+
+        <section>
+          <section>
+            <h2>Who are these guys?</h2>
+          </section>
+
+          <section>
+            <h2>Dietrich Ayala</h2>
+            <img src="imgs/firefox-logo.png" />
+          </section>
+
+          <section>
+            <h2>Fernando Jiménez</h2>
+            <img src="imgs/telefonica-logo.png"/>
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>Bootcamp overview</h2>
+          </section>
+          <section>
+            // TODO
+          </section>
+        </section>
+
+        <section>
+          <section>
+            <h2>What is Firefox OS?</h2>
+          </section>
+
+          <section>
+            <img src="imgs/phone.png" style="width: 35%" />
+            <p>Firefox OS is a new open source mobile operating system.</p>
+            <p>Fully based on <strong>web technologies.</strong></p>
+          </section>
+
+          <section>
+            <p>Closes a <strong>gap</strong> in the mobile market</p>
+          </section>
+
+          <section>
+            <img src="imgs/android-logo.png" style="width: 20%"/>
+            <img src="imgs/apple-logo.png" style="width: 20%"/>
+            <img src="imgs/windows-logo.png" style="width: 20%"/>
+            <img src="imgs/blackberry-logo.png" style="width: 20%"/>
+            <p style="margin: 20px">Provides an alternative, <strong>open</strong> platform</p>
+          </section>
+
+          <section>
+            <p>Released in <strong>14</strong> countries</p>
+            <p>Spain, Poland, Venezuela, Colombia, Peru, Uruguay, Mexico, Brazil...</p>
+            <p>And with <strong>7</strong> mobile operators and <strong>3</strong> hardware partners</p>
+          </section>
+ 
+          <section>
+            <p><strong>Beyond</strong> smartphones</p>
+            <img src="imgs/beyond-smartphone.png" class="styled" />
+          </section>
+        
+          <section>
+            <p>Did we mentioned that it is <strong>open source</strong>?</p>
+            <img src="imgs/github.png" style="width: 40%"/>
+            <p><strong>All</strong> the code is on <a href="http://github.com/mozilla-b2g">GitHub</a></p>
+          </section>
+
+        </section>
+
+        <section>
+          <section>
+            <h2>Architecture</h2>
+          </section>
+
+          <section>
+            <img src="imgs/platform.png" class="styled" />
+            <p>Firefox OS == Gonk + Gecko + Gaia</p>
+          </section>
+
+          <section>
+            <h3>Gonk</h3>
+            <img src="imgs/gonk.png" class="styled" style="width: 85%"/>
+            <p>Is an Android fork without a Dalvik machine. A <strong>fly-weight</strong> Linux distribution.</p>
+          </section>
+
+          <section>
+            <h3>Gecko</h3>
+            <img src="imgs/gecko.png" class="styled" style="width: 85%"/>
+            <p>Is the Firefox' engine <strong>on steroids</strong> (lots of new APIs).</p>
+          </section>
+
+          <section>
+            <h3>Gaia</h3>
+            <img src="imgs/gaia.png" class="styled" style="width: 85%"/>
+            <p>Is a set of Web Applications covering the <strong>core functionality</strong>: dialer, messaging, contacts, camera, gallery, homescreen, keyboard, system...</p>
+          </section>
+
+          <section>
+            <p>You can find more details about Firefox OS Architecture at the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Platform/Architecture">Mozilla Developer Network</a></p>
+          </section>
+
+        </section>
+
+        <section>
+          <section>
+            <h2>Applications</h2>
+          </section>
+
+          <section>
+            <p>Firefox OS applications == web applications + ...</p>
+          </section>
+
+          <section>
+            <p>Web applications?</p>
+            <img src="imgs/web-techs.png"/>
+          </section>
+
+          <section>
+            <img src="imgs/high-five.png" />
+            <p>You already know this stuff!</p>
+          </section>
+
+          <section>
+            <p>+ <strong>manifest</strong></p>
+            <p>The file where you say your web site is indeed a<br><strong>web application</strong>.</p>
+          </section>
+
+          <section>
+            <p>+ access to hardware through <strong>special APIs</strong></p>
+            <p>APIs allowing <strong>access to the hardware</strong> such as the<br/>(mobile) radio, sensors, geolocalitation, device storage...</p>
+          </section>
+
+          <section>
+            <p>+ some of them requiring <strong>special permissions</strong>.</p>
+            <p>To guarantee that the user has <strong>total control</strong><br/>about what she is doing.</p>
+          </section>
+
+          <section>
+            <p>+ a collaborating schema based on <strong>web activities</strong>.</p>
+            <p>To allow inter-app <strong>communications</strong>.</p>
+          </section>
+
+          <section>
+            <p>+ answering to device events attending <strong>system messages</strong>.</p>
+            <p>Avoiding background services running and consuming resources. <strong>Attend on demand!</strong></p>
+          </section>
+
+          <section>
+            <p>All these features <strong>are being standardized</strong> in order to reach...</p>
+            <p class="fragment">Firefox OS applications <strong>===</strong> web applications</p>
+          </section>
+
+        </section>
+
+        <section>
+          <section>
+            <h2>The manifest</h2>
+          </section>
+
+          <section>
+            <p>It's only a <code>JSON</code> file with <strong>three mandatory fields</strong>:</p>
+            <pre class="javascript"><code>{
+ "name": "Awesome App",
+ "description": "This application rocks!",
+ "launch_path": "/index.html"
+}</code></pre>
+            <p class="fragment">Call it <code>manifest.webapp</code> and add it to the root of your site.</p>
+          </section>
+
+          <section>
+            <p>You'll need a <strong>128px size icon</strong> to upload the app to the market:</p>
+            <pre class="javascript"><code>{
+  "icons": {
+    "16": "/img/icon-16.png",
+    "48": "/img/icon-48.png",
+    "128": "/img/icon-128.png"
+  }
+}</code></pre>
+          </section>
+
+          <section>
+            <p>You can provide <strong>developer information</strong>:</p>
+            <pre class="javascript"><code>{
+ "developer": {
+   "name": "The Gaia team",
+   "url": "http://gaiamobile.org"
+ },
+ "version": "1.0.1"
+}</code></pre>
+          </section>
+
+          <section>
+            <p>And <strong>translations</strong>:</p>
+            <pre class="javascript"><code>{
+  "locales": {
+    "es": {
+      "description": "¡Esta aplicación es la caña!",
+      "developer": {
+        "url": "http://gaiamobile.org/"
+    }
+  }
+}</code></pre>
+          </section>
+
+          <section>
+            <p>But the real <strong>interesting</strong> fields are:</p>
+            <p>permissions, web activities &amp; system messages</p>
+          </section>
+
+          <section>
+            <p>Explore all the options in the<br/><a href="https://developer.mozilla.org/en-US/Apps/Developing/Manifest" target="_blank">Mozilla Development Network page for manifest</a>!</p>
+          </section>
+
+        </section>
+
+        <section>
+          <section>
+            <h2>Security</h2>
+          </section>
+
+          <section>
+            // WIP
+          </section>
+
+          <section>
+            <h3>Types of applications</h3>
+            <p>Remember <strong>the Web is the platform</strong>?</p>
+          </section>
+
+          <section>
+            <blockquote>Hosted</blockquote>
+            <ul class="fragment">
+              <li>Internet origin</li>
+              <li>Can access remote resources</li>
+              <li>Local manifest</li>
+              <li>Security level: web</li>
+            </ul>
+            <blockquote>Packaged</blockquote>
+            <ul class="fragment">
+              <li>Installed on device</li>
+              <li>Only local resources</li>
+              <li>Remote resources via XHR</li>
+              <li>Security levels: several</li>
+            </ul>
+          </section>
+
+          <section>
+            <h3>Levels of safety</h3>
+            <blockquote>Web</blockquote>
+            <ul class="fragment">
+              <li>Complete access to HTML5</li>
+              <li>And safe APIs</li>
+            </ul>
+            <blockquote>Privileged</blockquote>
+            <ul class="fragment">
+              <li>Tight CSP policy (no inline)</li>
+              <li>Access to privileged APIs</li>
+            </ul>
+            <blockquote>Certified</blockquote>
+            <ul class="fragment">
+              <li>Can only be preinstalled</li>
+              <li>Access to certified APIs</li>
+            </ul>
+          </section>
+
+          <section>
+            <p>Asking for <strong>permission</strong> is easy.<br/>Just add this to the manifest:</p>
+            <pre class="javascript"><code>{
+  "permissions": {
+    "contacts": {
+      "description": "Import contacts to AwesomeApp",
+      "access": "read"
+    }
+  }
+}</code></pre>
+          </section>
+
+          <section>
+            <p>But there is a lot of permissions:</p>
+            <pre class="javascript"><code>{
+  "permissions": {
+    "alarms": {},
+    "browser":{},
+    "power":{},
+    "fmradio":{},
+    "webapps-manage":{},
+    "mobileconnection":{},
+    "bluetooth":{},
+    "telephony":{},
+    "voicemail":{},
+    "device-storage:sdcard":{ "access": "readonly" },
+    "device-storage:pictures":{ "access": "readwrite" },
+    "device-storage:videos":{ "access": "readwrite" },
+    "device-storage:music":{ "access": "readcreate" },
+    "device-storage:apps":{ "access": "readonly" },
+    "settings":{ "access": "readwrite" },
+    "storage":{},
+    "camera":{},
+    "geolocation":{},
+    "wifi-manage":{},
+    "desktop-notification":{},
+    "idle":{},
+    "network-events":{},
+    "embed-apps":{},
+    "background-sensors":{},
+    "permissions":{},
+    "audio-channel-notification":{},
+    "audio-channel-content":{},
+    "cellbroadcast":{},
+    "keyboard":{}
+  }
+}</code></pre>
+            <p>Check <a href="https://developer.mozilla.org/en-US/Apps/Developing/App_permissions">all permissions at the MDN</a>.</p>
+          </section>
+
+          <section>
+            <p>And you must remember to provide the <strong><code>type</code></strong><br/>when using privileged APIs:</p>
+            <pre class="javascript"><code>{
+  "type": "privileged"
+}</code></pre>
+            <p>And respect the CSP policy: <strong>no inline</strong> scripts nor CSS!</p>
+          </section>
+
+          <section>
+            <p>Geek note: <strong>security model</strong></p>
+            <img src="imgs/securityframework.png" class="styled" style="width: 85%;" />
+            <p>All applications are <strong>sandboxed</strong> and running in user space.</p>
+          </section>
+
+
+        </section>
+
+
+        <section>
+          <section>
+            <h2>WebAPIs</h2>
+          </section>
+        </section>
+
+      </div>
+
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.min.js"></script>
+
+    <script>
+
+      // Full list of configuration options available here:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+        controls: true,
+        progress: true,
+        history: true,
+        center: true,
+
+        theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+        transition: Reveal.getQueryHash().transition || 'concave', // default/cube/page/concave/zoom/linear/fade/none
+
+        // Optional libraries used to extend on reveal.js
+        dependencies: [
+          { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+          { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+          { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+          { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+        ]
+      });
+
+    </script>
+
+  </body>
+</html>
