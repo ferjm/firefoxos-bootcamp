@@ -159,7 +159,7 @@
           </section>
 
           <section>
-            <img src="imgs/high-five.png" />
+            <img src="imgs/high-five.png" class="styled"/>
             <p>You already know this stuff!</p>
           </section>
 
@@ -258,53 +258,61 @@
 
         <section>
           <section>
-            <h2>Security</h2>
-          </section>
-
-          <section>
-            // WIP
+            <h2>App Security</h2>
           </section>
 
           <section>
             <h3>Types of applications</h3>
-            <p>Remember <strong>the Web is the platform</strong>?</p>
+            <p>Remember: <strong>the Web is the platform</strong></p>
           </section>
 
           <section>
-            <blockquote>Hosted</blockquote>
-            <ul class="fragment">
-              <li>Internet origin</li>
-              <li>Can access remote resources</li>
-              <li>Local manifest</li>
-              <li>Security level: web</li>
-            </ul>
-            <blockquote>Packaged</blockquote>
-            <ul class="fragment">
-              <li>Installed on device</li>
-              <li>Only local resources</li>
-              <li>Remote resources via XHR</li>
-              <li>Security levels: several</li>
-            </ul>
+            <h3>By level of trust</h3>
+            <img src="imgs/shall-not-pass.png" class="styled"/>
           </section>
 
           <section>
-            <h3>Levels of safety</h3>
-            <blockquote>Web</blockquote>
-            <ul class="fragment">
-              <li>Complete access to HTML5</li>
-              <li>And safe APIs</li>
-            </ul>
-            <blockquote>Privileged</blockquote>
-            <ul class="fragment">
-              <li>Tight CSP policy (no inline)</li>
-              <li>Access to privileged APIs</li>
-            </ul>
-            <blockquote>Certified</blockquote>
-            <ul class="fragment">
-              <li>Can only be preinstalled</li>
-              <li>Access to certified APIs</li>
-            </ul>
+            <h3>Regular Web Content</h3>
+            <p class="fragment">Complete access to HTML5 and safe APIs</p>
+            <p class="fragment">Can request <strong>explicit</strong> access to some APIs: Geolocation, gUM, Fullscreen, Notifications, etc.</p>
+            <p class="fragment">Permissions not remembered by default</p>
           </section>
+
+          <section>
+            <h3>Installed Web Apps</h3>
+            <p class="fragment">Can request <strong>implicit</strong> access to some APIs: Alarms, FMRadio, etc.</p>
+            <p class="fragment">Direct fullscreen access</p>
+            <p class="fragment">Higher storage quotas</p>
+          </section>
+
+          <section>
+            <h3>Privileged</h3>
+            <p class="fragment">Equivalent in security and functionality to native apps on other platforms</p>
+            <p class="fragment">Content Security Policy (<strong>CSP</strong>): no inline</p>
+            <p class="fragment">Reviewed and signed by trusted app store</p>
+            <p class="fragment">Direct access to a lot of high risk APIs: Browser, Mobile Network, SystemXHR, TCPSockets, Contacts (explicit), etc.</p>
+          </section>
+
+          <section>
+            <h3>Certified</h3>
+            <p class="fragment">Intended for system-critical apps (i.e. Gaia)</p>
+            <p class="fragment">More extrict <strong>CSP</strong></p>
+            <p class="fragment">Never prompt for access (<strong>implicit</strong>) (except Geolocation and gUM)</p>
+            <p class="fragment">Direct access to critical risk APIs: WebSMS, WebTelephony, WebBluetooth, MobileConnection, PowerManagement, etc.</p>
+          </section>
+
+          <section>
+            <h3>By delivery mechanism</h3>
+            <img src="imgs/package.jpg" class="styled"/>
+          </section>
+
+          <section>
+            <h3>Hosted apps</h3>
+          </section>
+
+          <section>
+            <h3>Packaged apps</h3>
+          </section>          
 
           <section>
             <p>Asking for <strong>permission</strong> is easy.<br/>Just add this to the manifest:</p>
@@ -319,7 +327,7 @@
           </section>
 
           <section>
-            <p>But there is a lot of permissions:</p>
+            <p>But there are a lot of permissions:</p>
             <pre class="javascript"><code>{
   "permissions": {
     "alarms": {},
@@ -353,7 +361,7 @@
     "keyboard":{}
   }
 }</code></pre>
-            <p>Check <a href="https://developer.mozilla.org/en-US/Apps/Developing/App_permissions">all permissions at the MDN</a>.</p>
+            <p>Check <a href="https://developer.mozilla.org/en-US/Apps/Developing/App_permissions">all permissions at the MDN</a></p>
           </section>
 
           <section>
@@ -365,11 +373,13 @@
           </section>
 
           <section>
-            <p>Geek note: <strong>security model</strong></p>
             <img src="imgs/securityframework.png" class="styled" style="width: 85%;" />
             <p>All applications are <strong>sandboxed</strong> and running in user space.</p>
           </section>
 
+          <section>
+            <p>You can read more about Firefox OS security at the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Security/Security_model">Mozilla Developer Network</a></p>
+          </section>
 
         </section>
 
@@ -377,6 +387,10 @@
         <section>
           <section>
             <h2>WebAPIs</h2>
+          </section>
+          
+          <section>
+            // TODO
           </section>
         </section>
 
