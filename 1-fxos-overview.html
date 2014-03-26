@@ -96,12 +96,12 @@
             <p>Spain, Poland, Venezuela, Colombia, Peru, Uruguay, Mexico, Brazil...</p>
             <p>And with <strong>7</strong> mobile operators and <strong>3</strong> hardware partners</p>
           </section>
- 
+
           <section>
             <p><strong>Beyond</strong> smartphones</p>
             <img src="imgs/beyond-smartphone.png" class="styled" />
           </section>
-        
+
           <section>
             <p>Did we mentioned that it is <strong>open source</strong>?</p>
             <img src="imgs/github.png" style="width: 40%"/>
@@ -308,11 +308,22 @@
 
           <section>
             <h3>Hosted apps</h3>
+            <p class="fragment">Internet origin</p>
+            <p class="fragment">Local manifest</p>
+            <p class="fragment">Security level: <strong>web</strong></p>
           </section>
 
           <section>
             <h3>Packaged apps</h3>
-          </section>          
+            <p class="fragment">ZIP file format</p>
+            <p class="fragment">Only local resources</p>
+            <p class="fragment">Remote resources via XHR</p>
+            <p class="fragment">Security levels: <strong>several</strong></p>
+          </section>
+
+          <section>
+            <h3>Permissions</h3>
+          </section>
 
           <section>
             <p>Asking for <strong>permission</strong> is easy.<br/>Just add this to the manifest:</p>
@@ -327,7 +338,7 @@
           </section>
 
           <section>
-            <p>But there are a lot of permissions:</p>
+            <p>And there are a ton of permissions:</p>
             <pre class="javascript"><code>{
   "permissions": {
     "alarms": {},
@@ -361,11 +372,11 @@
     "keyboard":{}
   }
 }</code></pre>
-            <p>Check <a href="https://developer.mozilla.org/en-US/Apps/Developing/App_permissions">all permissions at the MDN</a></p>
+            <p>Check <a href="https://developer.mozilla.org/en-US/Apps/Developing/App_permissions">the whole list at the MDN</a></p>
           </section>
 
           <section>
-            <p>And you must remember to provide the <strong><code>type</code></strong><br/>when using privileged APIs:</p>
+            <p>You must also remember to provide the <strong><code>type</code></strong><br/>when using privileged APIs:</p>
             <pre class="javascript"><code>{
   "type": "privileged"
 }</code></pre>
@@ -373,8 +384,35 @@
           </section>
 
           <section>
-            <img src="imgs/securityframework.png" class="styled" style="width: 85%;" />
+            <h3>Protecting apps from other apps</h3>
+            <img src="imgs/appvsapp.gif" class="styled">
+          </section>
+
+          <section>
+            <img src="imgs/sandbox.png" class="styled" style="width: 85%;" />
             <p>All applications are <strong>sandboxed</strong> and running in user space.</p>
+            <p>Per app separation of cookies, localStorage, appCache, indexedDB</p>
+          </section>
+
+          <section>
+            <h3>&lt;iframe mozapp&gt;</h3>
+            <p class="fragment">Apps run inside mozApps iframes</p>
+            <p class="fragment">Only the System app may embed these type of iframes</p>
+            <p class="fragment">One app can't directly launch or frame another</p>
+          </section>
+
+          <section>
+            <h3>&lt;iframe mozbrowser&gt;</h3>
+            <img src="imgs/yodawg.jpg" class="styled" style="width:55%">
+            <p class="fragment">In child, window.top == window (!window.parent)</p>
+            <p class="fragment">In parent, allowed limited cross-domain access (current location, same child events)</p>
+          </section>
+
+          <section>
+            <h3>Protecting the OS from apps</h3>
+            <p class="fragment">Apps can only talk to OS via <strong>IPC</strong> (IPDL)</p>
+            <p class="fragment">Content processes run as low-rights</p>
+            <p class="fragment">App process permissions are limited to itself (process permissions == manifest permissions)</p>
           </section>
 
           <section>
@@ -388,7 +426,7 @@
           <section>
             <h2>WebAPIs</h2>
           </section>
-          
+
           <section>
             // TODO
           </section>
