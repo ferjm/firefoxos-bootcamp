@@ -7,7 +7,7 @@
     <title>Firefox OS Bootcamp</title>
 
     <meta name="description" content="Firefox OS bootcamp">
-    <meta name="author" content="Dietrich Ayala and Fernando Jiménez Moreno based on Salvador de la Puente's work">
+    <meta name="author" content="Dietrich Ayala and Fernando Jiménez Moreno">
 
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
@@ -38,64 +38,261 @@
         <section>
           <header>
             <h1>Firefox OS</h1>
-            <h2>Bootcamp - Hacking In Gecko/Gonk</h2>
+            <h2>Bootcamp - Hacking on Gecko</h2>
             <div id="foxtail"></div>
           </header>
         </section>
 
 
         <section>
-          <h2>
-        4.0. Getting the source (ideally before the bootcamp)
-          </h2>
+          <section>
+            <h3>Getting Mozilla Central source code</h3>
+          </section>
+
+          <section>
+            <p>You'll need <a href="http://mercurial.selenic.com/">Mercurial</a></p>
+          </section>
+
+          <section>
+            <h3><a href="https://developer.mozilla.org/en-US/docs/Developer_Guide/Source_Code/Mercurial/Bundles">Mercurial Bundles</a></h3>
+            <p class="fragment">
+              <pre>
+                <code>
+$ mkdir mozilla-central
+$ hg init mozilla-central
+$ cd mozilla-central
+$ hg unbundle /path/to/your/bundle.hg
+                </code>
+              </pre>
+            </p>
+          </section>
+
+          <section>
+            <p>Create the <code>mozilla-central/.hg/hgrc</code> file</p>
+            <pre>
+              <code>
+[paths]
+default = https://hg.mozilla.org/mozilla-central/
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <p><code>hg pull -u</code> to bring the latest changes</p>
+          </section>
+
+          <section>
+            <p>Take a look at <a href="https://developer.mozilla.org/es/docs/Mercurial_Queues">Mercurial Queues</a></p>
+          </section>
         </section>
 
         <section>
-          <h2>
-        4.1. Setting up build environment.
-          </h2>
+          <section>
+            <h3>Getting B2G source code</h3>
+          </section>
+
+          <section>
+            <p>You'll need <a href="http://git-scm.com/">Git</a></p>
+          </section>
+
+          <section>
+            <p>All the code is on <a href="">Github</a></p>
+            <pre>
+              <code>
+$ git clone git://github.com/mozilla-b2g/B2G.git
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <h3>Updating the code</h3>
+            <pre>
+              <code>
+$ git pull
+$ ./repo sync -d
+              </code>
+            </pre>
+          </section>
+
         </section>
 
         <section>
-          <h2>
-        4.2. The .mozconfig file.
-          </h2>
+          <h3><a href="https://developer.mozilla.org/en-US/Firefox_OS/Firefox_OS_build_prerequisites">Build prerequisites</a></h3>
         </section>
 
         <section>
-          <h2>
-        4.3. Building B2G desktop.
-          </h2>
+          <section>
+            <h3>The .mozconfig file</h3>
+          </section>
+
+          <section>
+            <p><code>mk_add_options</code> for <code>client.mk</code> options</p>
+            <p><code>ac_add_options</code> for <code>configure</code> options</p>
+          </section>
+
+          <section>
+            <p>A .mozconfig example</p>
+            <pre>
+              <code># When building with ccache, clang thinks it's not
+# printing to the console
+CC="clang -fcolor-diagnostics"
+CXX="clang++ -fcolor-diagnostics"
+
+# b2g options
+mk_add_options MOZ_OBJDIR=./obj-b2g
+ac_add_options --enable-application=b2g
+
+# firefox options
+#mk_add_options MOZ_OBJDIR=./obj-firefox
+#ac_add_options --enable-application=browser
+
+mk_add_options MOZ_MAKE_FLAGS="-j12 -s"
+mk_add_options AUTOCLOBBER=1
+
+mk_add_options ENABLE_MARIONETTE=1
+
+ac_add_options --enable-debug
+ac_add_options --enable-debug-symbols
+ac_add_options --with-ccache
+ac_add_options --disable-libjpeg-turbo
+ac_add_options --enable-tests
+ac_add_options --disable-crashreporter
+              </code>
+            </pre>
+          </section>
         </section>
 
         <section>
-          <h2>
-        4.4. Building B2G for the device.
-          </h2>
+          <section>
+            <h3>Building B2G desktop</h3>
+            <p><code>ac_add_options --enable-application=b2g</code> in the <code>.mozconfig</code></p>
+            <p><code>./mach build</code></p>
+          </section>
+          <section>
+            <p>More about the B2G desktop client at the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Using_the_B2G_desktop_client">MDN</a></p>
+          </section>
         </section>
 
         <section>
-          <h2>
-        4.5. The .userconfig file
-          </h2>
+          <section>
+            <h3>Building B2G for the device</h3>
+          </section>
+
+          <section>
+            <p><strong>Configuring</strong> the build</p>
+            <pre>
+              <code>
+$ ./config.sh
+Usage: ./config.sh [-cdflnq] (device name)
+Flags are passed through to |./repo sync|.
+
+Valid devices to configure are:
+- galaxy-s2
+- galaxy-nexus
+- nexus-4
+- nexus-s
+- nexus-s-4g
+- flo "(Nexus 7 2013)"
+- otoro
+- unagi
+- inari
+- keon
+- peak
+- leo
+- hamachi
+- helix
+- wasabi
+- fugu
+- tara
+- pandaboard
+- emulator
+- emulator-jb
+- emulator-x86
+- emulator-x86-jb
+              </code>
+            </pre>
+          <p><code>./config.sh /device/</code> will download the whole internet and set up the build for your selected device</p>
+          </section>
+
+          <section>
+            <p>Doing a full <strong>build</strong></p>
+            <pre>
+              <code>
+$ ./build.sh
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <p>Building specific <strong>modules</strong></p>
+            <p><code>./build.sh gecko</code></p>
+            <p><code>./build.sh gaia</code></p>
+          </section>
+
+          <section>
+            <p><strong>Flashing</strong> your device</p>
+            <p><code>./flash.sh</code> for a full build</p>
+            <p><code>./flash.sh gecko</code> for a gecko only build</p>
+            <p><code>./flash.sh gaia</code> for a gaia only build</p>
+          </section>
+
+          <section>
+            <h3><a href="https://github.com/ferjm/omnipush">Omnipush</a></h3>
+          </section>
         </section>
 
         <section>
-          <h2>
-        4.6. Getting help and dev resources.
-          </h2>
+          <section>
+            <h3>The .userconfig file</h3>
+          </section>
+
+          <section>
+            <p>Changing the Gecko source tree and objdir</p>
+            <pre>
+              <code>
+export GECKO_PATH=${B2G_DIR}/mozilla-inbound
+export GECKO_OBJDIR=${GECKO_PATH}/objdir-gonk-debug
+              </code>
+            </pre>
+          </section>
+
+          <section>
+            <p>Defining the <strong>type</strong> of build</p>
+            <p><code>VARIANT=user|eng</code></p>
+          </section>
+
+          <section>
+            <p>More on the <a href="https://developer.mozilla.org/en-US/Firefox_OS/Customization_with_the_.userconfig_file">MDN</a></p>
+          </section>
         </section>
 
         <section>
-          <h2>
-        4.7. Contributing.
-          </h2>
-        </section>
+          <section>
+            <h3>Getting help and dev resources</h3>
+          </section>
 
-        <section>
-          <h2>
-        4.8. Maybe more details about HAL, Battery API, Necko?
-          </h2>
+          <section>
+            <p>Mostly the same resources as for <a href="3-hacking-in-gaia.html#/6">Gaia development</a></p>
+          </section>
+
+          <section>
+            <p>A few additional <strong>IRC</strong> channels</p>
+            <p>#developers</p>
+            <p>#introduction</p>
+            <p>#content</p>
+          </section>
+
+          <section>
+            <p><a href="https://groups.google.com/forum/#!forum/mozilla.dev.platform">dev-platform</a> is also quite interesting</p>
+          </section>
+
+          <section>
+            <h3><a href="http://dxr.mozilla.org/mozilla-central/source/">DXR</a></h3>
+          </section>
+
+          <section>
+            <h3><a href="http://codefirefox.com/">Code Firefox</a></h3>
+          </section>
         </section>
 
         <section>
