@@ -43,60 +43,173 @@
           </header>
         </section>
 
-
         <section>
-          <h2>
-            App Load Time
-          </h2>
+          <h2>Priorities.</h2>
+          <blockquote>
+            Over the past four decades, researches have found consistently that
+            an interactive system's responsiveness [...] is the <b>most</b>
+            important factor in determining user satisfaction.
+            <footer>
+              <cite>
+                Designing with the Mind in Mind, p. 151
+              </cite>
+            </footer>
+          </blockquote>
         </section>
 
         <section>
-          <h2>
-            Jank
-          </h2>
+          <h2>Human Time Requirements</h2>
+          <ul>
+            <li>1ms - Perception of audio gaps</li>
+            <li>50ms - Sucession of images (animation)</li>
+            <li>100ms - Hand-eye coordination (scrolling, swiping)</li>
+            <li>140ms - Cause and effect (button presses)</li>
+            <li>1s - Progress (app launch, network connection)</li>
+            <li>10s - Completion of sub-task (create contact, send sms)</li>
+          </ul>
         </section>
 
         <section>
-          <h2>
-            Memory Consumption
-          </h2>
+          <h2>Where to test?</h2>
+          <p>On every device. Seriously.</p>
+          <p>Use 3rd party services, crowdsourcing, etc.</p>
+          <p>Extreme variability across the stack.</p>
         </section>
 
         <section>
-          <h2>
-            Power Consumption
-          </h2>
+          <section>
+            <h2>Areas of Performance</h2>
+          </section>
+
+          <section>
+            <h2>App Load Time</h2>
+            <p>First paint - 100ms</p>
+            <p>Interactive - 1s</p>
+            <p>Full load - variable</p>
+            <p>Especially important in low-memory devices</p>
+          </section>
+
+          <section>
+            <h2>Jank</h2>
+            <p>Event loop lag</p>
+            <p>Gecko runs event handlers *to completion*</p>
+            <p>Handlers taking >16ms means skipped frames</p>
+            <p>Which means painting at <60fps</p>
+          </section>
+
+          <section>
+            <h2>Memory Consumption</h2>
+            <p>Very important due to low-cost devices.</p>
+            <p>Launch devices had 256mb RAM (ouch)</p>
+            <p>$25 device has 128mb RAM (!!!)</p>
+          </section>
+
+          <section>
+            <h2>Power Consumption</h2>
+            <p>Web content runs hot</p>
+            <p>Cheap batteries</p>
+          </section>
+
+          <section>
+            <h2>Graphics</h2>
+            <p>Over invalidation</p>
+            <p>Wasteful layer trees</p>
+            <p>Excess layer creation/destruction</p>
+          </section>
+
+          <section>
+            <h2>Perceived Performance</h2>
+            <img src="imgs/progress.jpg">
+          </section>
+
         </section>
 
         <section>
-          <h2>
-            Perceived Performance
-          </h2>
+          <section>
+            <h2>Gaia Tools</h2>
+          </section>
+
+          <section>
+            <h2>Settings->Developer</h2>
+            <p>A lot of options here</p>
+          </section>
+
+          <section>
+            <h2>Developer HUD</h2>
+            <img src="imgs/hud.png">
+          </section>
+
+          <section>
+            <h2>Framerate Monitor</h2>
+            <img src="imgs/framerate.png">
+          </section>
+
+          <section>
+            <h2>First Paint Time</h2>
+            <img src="imgs/firstpaint.png">
+          </section>
+
+          <section>
+            <h2>Paint Flashing</h2>
+            <img src="imgs/paintflashing.png">
+          </section>
+
         </section>
 
         <section>
-          <h2>
-            FPS
-          </h2>
+          <section>
+            <h2>Platform Tools</h2>
+          </section>
+
+          <section>
+            <h2>make test-perf</h2>
+            <p>Gaia make target</p>
+            <p>App start</p>
+            <p>App ready</p>
+            <p>Custom tests</p>
+          </section>
+
+          <section>
+            <h2>Gecko Profiler</h2>
+            <code>
+              ./profile.sh start -p b2g -i 10 && ./profile.sh start -p Settings
+            </code>
+          </section>
+
+          <section>
+            <h2>Eideticker</h2>
+            <p>High speed camera</p>
+            <img src="imgs/eideticker.png">
+          </section>
+
+          <section>
+            <h2>FxOS Powertool</h2>
+            <img src="imgs/powertool.png">
+          </section>
+
+          <section>
+            <h2>And more</h2>
+            <p>Valgrind</p>
+            <p>Systrace</p>
+            <p>b2g-info</p>
+          </section>
+
         </section>
 
+        <!--
         <section>
-          <h2>
-            Graphics
-          </h2>
-        </section>
+          <section>
+            <h2>Developer Best Practices</h2>
+          </section>
 
-        <section>
-          <h2>
-            Profiling
-          </h2>
-        </section>
+          <section>
+            <h2>visibilitychange</h2>
+            <p></p>
+          </section>
 
-        <section>
-          <h2>
-            Automation
-          </h2>
         </section>
+        -->
+
 
       </div>
 
